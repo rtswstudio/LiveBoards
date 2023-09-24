@@ -47,7 +47,8 @@
     "memory": {
       "free": 56280800,
       "total": 83886080,
-      "max": 8589934592}
+      "max": 8589934592
+    }
     ,
     "version": "0.1",
     "processors": {
@@ -356,3 +357,7 @@ For our example, we will configure a `browsers` board, and display results using
 | `head` | Return elements from the start of the series | - `value`: the number of elements                                                                                                                                                                           |
 | `tail` | Return elements from the end of the series   | - `value`: the number of elements                                                                                                                                                                           |
 | `match` | Return elements matching a certain criteria | - `table`: the table to match<br/>- `column`: the column in the table to match<br/>- `operation`: the operation to apply for matching values (`above`, `below`, `equals`)<br/>- `value`: the value to match |
+
+## Dependencies
+
+- [Chart.js](https://github.com/chartjs/Chart.js): Used to render visualizations, licensed under the [MIT License](https://github.com/chartjs/Chart.js/blob/master/LICENSE.md)
