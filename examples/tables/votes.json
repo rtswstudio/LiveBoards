@@ -1,0 +1,17 @@
+{
+  "name": "votes",
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "time",
+      "type": "timestamp"
+    }
+  ]
+}

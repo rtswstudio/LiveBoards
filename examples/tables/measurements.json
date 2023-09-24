@@ -1,0 +1,25 @@
+{
+  "name": "measurements",
+  "columns": [
+    {
+      "name": "id",
+      "type": "integer"
+    },
+    {
+      "name": "temperature",
+      "type": "decimal"
+    },
+    {
+      "name": "humidity",
+      "type": "decimal"
+    },
+    {
+      "name": "pressure",
+      "type": "decimal"
+    },
+    {
+      "name": "timestamp",
+      "type": "string"
+    }
+  ]
+}

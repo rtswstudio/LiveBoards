@@ -1,0 +1,46 @@
+{
+  "name": "measurements",
+  "title": "Sensor Trends",
+  "type": "line",
+  "label": {
+    "table": "measurements",
+    "column": "timestamp"
+  },
+  "values": [
+    {
+      "table": "measurements",
+      "column": "temperature",
+      "aggregate": "first",
+      "category": "Temperature"
+    },
+    {
+      "table": "measurements",
+      "column": "humidity",
+      "aggregate": "first",
+      "category": "Humidity"
+    },
+    {
+      "table": "measurements",
+      "column": "pressure",
+      "aggregate": "first",
+      "category": "Pressure"
+    }
+  ],
+  "filters": [
+    {
+      "type": "tail",
+      "properties": {
+        "value": 20
+      }
+    }
+  ],
+  "options": {
+    "maintainAspectRatio": false,
+    "animation": false,
+    "scales": {
+      "y": {
+        "beginAtZero": true
+      }
+    }
+  }
+}

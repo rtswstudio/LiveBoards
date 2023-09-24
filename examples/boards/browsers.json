@@ -1,0 +1,29 @@
+{
+  "name": "browsers",
+  "title": "Browser Distribution as Pie Chart",
+  "type": "pie",
+  "label": {
+    "table": "browsers",
+    "column": "name"
+  },
+  "values": [
+    {
+      "table": "browsers",
+      "column": "id",
+      "aggregate": "count",
+      "category": "Occurrences"
+    }
+  ],
+  "filters": [
+  ],
+  "options": {
+    "maintainAspectRatio": false,
+    "animation": true,
+    "responsive": true,
+    "plugins": {
+      "colors": {
+        "forceOverride": true
+      }
+    }
+  }
+}

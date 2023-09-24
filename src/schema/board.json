@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["pie", "bar", "line"]
+    },
+    "label": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "table": {
+          "type": "string"
+        },
+        "column": {
+          "type": "string"
+        }
+      },
+      "required": ["table", "column"]
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "table": {
+            "type": "string"
+          },
+          "column": {
+            "type": "string"
+          },
+          "aggregate": {
+            "type": "string",
+            "enum": ["count", "distinct", "sum", "minimum", "maximum", "average", "first", "last", "range", "mode"]
+          },
+          "category": {
+            "type": "string"
+          }
+        },
+        "required": ["table", "column", "aggregate", "category"]
+      }
+    },
+    "filters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["head", "tail", "match"]
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "table": {
+                "type": "string"
+              },
+              "column": {
+                "type": "string"
+              },
+              "operation": {
+                "type": "string",
+                "enum": ["above", "below", "equals"]
+              },
+              "value": {
+                "type": ["string", "integer", "number", "boolean"]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["name", "title", "type", "label", "values"]
+}

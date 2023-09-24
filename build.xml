@@ -1,0 +1,53 @@
+<project name="LiveBoards" default="dist" basedir=".">
+
+    <property name="version" value="0.1"/>
+
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+    <property name="lib" location="lib"/>
+    <property name="scripts" location="scripts"/>
+
+    <path id="classpath">
+        <fileset dir="${lib}" includes="**/*.jar"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${build}/schema"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac includeantruntime="false" srcdir="${src}" destdir="${build}" classpathref="classpath"/>
+        <copy todir="${build}/schema" >
+            <fileset dir="${src}/schema" includes="**"/>
+        </copy>
+    </target>
+
+    <target name="dist" depends="compile">
+        <mkdir dir="${dist}/lib"/>
+        <copy todir="${dist}/lib" >
+            <fileset dir="${lib}" includes="**"/>
+        </copy>
+        <jar jarfile="${dist}/liveboards-${version}.jar" basedir="${build}">
+            <include name="**/*" />
+        </jar>
+        <copy file="log4j2.xml" todir="${dist}"/>
+        <copy file="liveboards-config.json" todir="${dist}"/>
+        <copy file="${scripts}/run.sh" todir="${dist}"/>
+        <copy file="${scripts}/run.cmd" todir="${dist}"/>
+        <mkdir dir="${dist}/examples"/>
+        <copy todir="${dist}/examples" >
+            <fileset dir="examples" includes="**/*"/>
+        </copy>
+        <mkdir dir="${dist}/templates"/>
+        <copy todir="${dist}/templates" >
+            <fileset dir="templates" includes="**"/>
+        </copy>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <div style="position: relative; margin: auto; width: 90vw; height: 90vh;">
+            <canvas id="chart"></canvas>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vertx/3.9.4/vertx-eventbus.min.js"></script>
+        <script>
+            const ctx = document.getElementById('chart');
+            const chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [],
+                    datasets: [],
+                },
+                options: {{options}}
+            });
+            const eventBus = new EventBus("http://localhost:8888/eventbus/");
+            eventBus.onopen = function () {
+                eventBus.registerHandler('events.{{name}}', function (error, message) {
+                    var json = JSON.parse(message.body);
+                    chart.data.labels = json.labels;
+                    var i = 0;
+                    for (var category in json.values) {
+                        if (!chart.data.datasets[i]) {
+                            chart.data.datasets[i] = {
+                                label: category,
+                                data: json.values[category]
+                            }
+                        } else {
+                            chart.data.datasets[i].label = category;
+                            chart.data.datasets[i].data = json.values[category];
+                        }
+                        i++;
+                    }
+                    chart.update();
+                });
+            }
+        </script>
+    </body>
+</html>

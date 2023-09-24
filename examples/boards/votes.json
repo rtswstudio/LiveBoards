@@ -1,0 +1,29 @@
+{
+  "name": "votes",
+  "title": "Votes",
+  "type": "bar",
+  "label": {
+    "table": "votes",
+    "column": "name"
+  },
+  "values": [
+    {
+      "table": "votes",
+      "column": "id",
+      "aggregate": "count",
+      "category": "Count"
+    }
+  ],
+  "filters": [
+  ],
+  "options": {
+    "maintainAspectRatio": false,
+    "animation": true,
+    "responsive": true,
+    "plugins": {
+      "colors": {
+        "forceOverride": true
+      }
+    }
+  }
+}
