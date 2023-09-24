@@ -1,12 +1,19 @@
 # LiveBoards
 
-**LiveBoards** allows real-time visualization of your data as events occur, using one single application. Events are published using a RESTful API and stored to an in-memory database loosely following a tabular format familiar from relational databases. Changes in the database are immediately picked up by the aggregation pipeline, and results are calculated on-the-fly for every set of defined boards (views) to your data. Completed results, again, are immediately pushed to boards where visualizations are automatically updated, without the need for any interaction.
+**LiveBoards** allows real-time visualization of your data as events occur, using one single application. Events are published using a RESTful API and stored into an in-memory database loosely following a tabular format familiar from relational databases. Changes in the database are immediately picked up by the filter and aggregation pipelines, and results are calculated on-the-fly for every set of defined boards (views) to your data. Completed results, again, are immediately pushed to boards where visualizations are automatically updated, without the need for any interaction.
 
 ![](etc/lb-1.png)
 
 ## Running
 
 **Note!** Examples for MacOS, Unix, & Linux.
+
+**Requirements**
+
+- Make sure you have Java Development Kit version **17** or newer installed
+- Make sure you have Apache Ant **1.10** or newer installed
+
+**Instructions**
 
 1. Clone this repository (and check out a specific version if needed):
    ```
@@ -329,23 +336,23 @@ For our example, we will configure a `browsers` board, and display results using
 
 ### Aggregate Functions
 
-| Name       | Description                                                   | Accepted Types |
-|------------|---------------------------------------------------------------|----------------|
-| `count`    | Return ther number of elements                                | All |
-| `distinct`   | Return the number of unique elements                          | All |
-| `sum`        | Return the sum of all elements                                | `integer`, `decimal` |
-| `minimum`    | Return the element with the minimum value                     | `integer`, `decimal`, `timestamp` |
-| `maximum`    | Return the element with the maximum value                     | `integer`, `decimal`, `timestamp` |
-| `average`    | Return the average value of all elements                      | `integer`, `decimal` |
-| `first`      | Return the first occurred element                             | All |
-| `last`       | Return the last occurred element                              | All |
-| `mode`       | Return the element which occurs the most                      | `integer`, `decimal` |
-| `range`      | Return the difference between the minimum and maximum element | `integer`, `decimal` |
+| Name        | Description                                                   | Accepted Types                    |
+|-------------|---------------------------------------------------------------|-----------------------------------|
+| `count`     | Return ther number of elements                                | All                               |
+| `distinct`  | Return the number of unique elements                          | All                               |
+| `sum`       | Return the sum of all elements                                | `integer`, `decimal`              |
+| `minimum`   | Return the element with the minimum value                     | `integer`, `decimal`, `timestamp` |
+| `maximum`   | Return the element with the maximum value                     | `integer`, `decimal`, `timestamp` |
+| `average`   | Return the average value of all elements                      | `integer`, `decimal`              |
+| `first`     | Return the first occurred element                             | All                               |
+| `last`      | Return the last occurred element                              | All                               |
+| `mode`      | Return the element which occurs the most                      | `integer`, `decimal`              |
+| `range`     | Return the difference between the minimum and maximum element | `integer`, `decimal`              |
 
 ### Filters
 
-| Name | Description                                  | Parameters                                                                                                                                                                                            |
-|------|----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `head` | Return elements from the start of the series | - `value`: the number of elements                                                                                                                                                                     |
-| `tail` | Return elements from the end of the series   | - `value`: the number of elements                                                                                                                                                                     |
-| `match` | Return elements matching a certain criteria  | - `table`: the table to match<br/>- `column`: the column in the table to match<br/>- `operation`: the operation to apply for matching values (`above`, `below`, `equals`)<br/>- `value`: the value to match |
+| Name | Description                                    | Parameters                                                                                                                                                                                                  |
+|------|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `head` | Return elements from the start of the series | - `value`: the number of elements                                                                                                                                                                           |
+| `tail` | Return elements from the end of the series   | - `value`: the number of elements                                                                                                                                                                           |
+| `match` | Return elements matching a certain criteria | - `table`: the table to match<br/>- `column`: the column in the table to match<br/>- `operation`: the operation to apply for matching values (`above`, `below`, `equals`)<br/>- `value`: the value to match |
