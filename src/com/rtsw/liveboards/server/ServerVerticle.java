@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rtsw.liveboards.board.BoardAggregator;
 import com.rtsw.liveboards.board.BoardFilter;
 import com.rtsw.liveboards.board.BoardRepository;
+import com.rtsw.liveboards.configuration.Configuration;
 import com.rtsw.liveboards.model.Board;
 import com.rtsw.liveboards.model.ModelRepository;
 import com.rtsw.liveboards.configuration.ConfigurationRepository;
@@ -98,6 +99,7 @@ public class ServerVerticle extends AbstractVerticle {
             params.put("name", board.getName());
             params.put("labels", boardAggregator.labels());
             params.put("values", boardAggregator.values());
+            params.put("client", ConfigurationRepository.getRepository().get().getClient());
             try {
                 params.put("options", objectMapper.writeValueAsString(board.getOptions()).replaceAll("\"", ""));
             } catch (Exception e) {

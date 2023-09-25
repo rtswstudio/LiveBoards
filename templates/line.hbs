@@ -21,7 +21,7 @@
                 },
                 options: {{options}}
             });
-            const eventBus = new EventBus("http://localhost:8888/eventbus/");
+            const eventBus = new EventBus("http://{{client.host}}:{{client.port}}/eventbus/");
             eventBus.onopen = function () {
                 eventBus.registerHandler('events.{{name}}', function (error, message) {
                     var json = JSON.parse(message.body);

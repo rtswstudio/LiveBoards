@@ -6,6 +6,8 @@ public class Configuration implements Serializable {
 
     private Server server;
 
+    private Client client;
+
     private Tables tables;
 
     private Boards boards;
@@ -19,6 +21,14 @@ public class Configuration implements Serializable {
 
     public void setServer(Server server) {
         this.server = server;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Tables getTables() {

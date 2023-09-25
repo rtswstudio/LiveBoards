@@ -13,6 +13,17 @@
         }
       }
     },
+    "client": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        }
+      }
+    },
     "tables": {
       "type": "object",
       "properties": {
