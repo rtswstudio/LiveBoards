@@ -21,7 +21,7 @@ public class BoardRepository {
 
     private JsonSchemaFactory factory = JsonSchemaFactory.byDefault();
 
-    LocalMap<String, Board> boards;
+    private LocalMap<String, Board> boards;
 
     public BoardRepository(Vertx vertx) {
         boards = vertx.sharedData().getLocalMap("boards");
@@ -47,9 +47,7 @@ public class BoardRepository {
             L.info(String.format("loaded board from input '%s'", input.toString()));
             return (create(board));
         } else {
-
             System.err.println(processingReport.toString());
-
             throw new Exception(String.format("input from '%s' does not pass validation", input.toString()));
         }
     }

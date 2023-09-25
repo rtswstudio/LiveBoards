@@ -8,6 +8,7 @@ import com.github.fge.jsonschema.main.JsonValidator;
 import com.rtsw.liveboards.configuration.ConfigurationRepository;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.shareddata.AsyncMap;
 import io.vertx.core.shareddata.LocalMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,7 +28,7 @@ public class ModelRepository {
 
     private LocalMap<String, Table> tables;
 
-    LocalMap<String, List<Row>> data;
+    private LocalMap<String, List<Row>> data;
 
     public ModelRepository(Vertx vertx) {
         tables = vertx.sharedData().getLocalMap("tables");

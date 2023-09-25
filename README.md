@@ -333,6 +333,26 @@ For our example, we will configure a `browsers` board, and display results using
 }
 ````
 
+**Customizing Board Visualizations**
+
+An optional `options` block can be added to the board configuration. This allows passing through options to the rendered visualization, which is done via **Chart.js**. For example:
+
+````
+...
+"options": {
+ "maintainAspectRatio": false,
+ "animation": false,
+ "scales": {
+   "y": {
+     "beginAtZero": true
+   }
+ }
+}
+...
+````
+
+Please refer to the [Chart.js](https://www.chartjs.org/docs/latest/general/options.html) documentation for details.
+
 ## API
 
 ### Summary
