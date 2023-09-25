@@ -84,6 +84,17 @@
         }
       }
     },
+    "client": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        }
+      }
+    },     
     "tables": {
       "type": "object",
       "properties": {
@@ -110,6 +121,10 @@
 ````json
 {
   "server": {
+    "host": "127.0.0.1",
+    "port": 8888
+  }, 
+  "client": {
     "host": "127.0.0.1",
     "port": 8888
   },
