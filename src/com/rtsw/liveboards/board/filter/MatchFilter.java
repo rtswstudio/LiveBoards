@@ -11,7 +11,11 @@ public class MatchFilter implements Filter {
 
     public static final String OPERATION_EQUALS = "equals";
 
+    public static final String OPERATION_EQUALS_OR_BELOW = "equals_on_below";
+
     public static final String OPERATION_BELOW = "below";
+
+    public static final String OPERATION_EQUALS_OR_ABOVE = "equals_or_above";
 
     public static final String OPERATION_ABOVE = "above";
 
@@ -40,12 +44,32 @@ public class MatchFilter implements Filter {
                     }
                     break;
                 }
+                case OPERATION_EQUALS_OR_BELOW: {
+                    Object o = row.getValues().get(column);
+                    if (o instanceof Double && !((Double) o <= Double.parseDouble(value.toString()))) {
+                        iterator.remove();
+                    }
+                    if (o instanceof Integer && !((Integer) o <= Integer.parseInt(value.toString()))) {
+                        iterator.remove();
+                    }
+                    break;
+                }
                 case OPERATION_BELOW: {
                     Object o = row.getValues().get(column);
                     if (o instanceof Double && !((Double) o < Double.parseDouble(value.toString()))) {
                         iterator.remove();
                     }
                     if (o instanceof Integer && !((Integer) o < Integer.parseInt(value.toString()))) {
+                        iterator.remove();
+                    }
+                    break;
+                }
+                case OPERATION_EQUALS_OR_ABOVE: {
+                    Object o = row.getValues().get(column);
+                    if (o instanceof Double && !((Double) o >= Double.parseDouble(value.toString()))) {
+                        iterator.remove();
+                    }
+                    if (o instanceof Integer && !((Integer) o >= Integer.parseInt(value.toString()))) {
                         iterator.remove();
                     }
                     break;

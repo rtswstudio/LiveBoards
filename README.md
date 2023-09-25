@@ -275,7 +275,7 @@ Boards define the views to our data. Each board contains a single visualization,
               },
               "operation": {
                 "type": "string",
-                "enum": ["above", "below", "equals"]
+                "enum": ["above", "below", "equals", "equals_or_above", "equals_or_below"]
               },
               "value": {
                 "oneOf": [
@@ -369,11 +369,11 @@ For our example, we will configure a `browsers` board, and display results using
 
 ### Filters
 
-| Name | Description                                    | Parameters                                                                                                                                                                                                  |
-|------|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `head` | Return elements from the start of the series | - `value`: the number of elements                                                                                                                                                                           |
-| `tail` | Return elements from the end of the series   | - `value`: the number of elements                                                                                                                                                                           |
-| `match` | Return elements matching a certain criteria | - `table`: the table to match<br/>- `column`: the column in the table to match<br/>- `operation`: the operation to apply for matching values (`above`, `below`, `equals`)<br/>- `value`: the value to match |
+| Name | Description                                    | Parameters                                                                                                                                                                                                                                        |
+|------|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `head` | Return elements from the start of the series | - `value`: the number of elements                                                                                                                                                                                                                 |
+| `tail` | Return elements from the end of the series   | - `value`: the number of elements                                                                                                                                                                                                                 |
+| `match` | Return elements matching a certain criteria | - `table`: the table to match<br/>- `column`: the column in the table to match<br/>- `operation`: the operation to apply for matching values (`above`, `below`, `equals`, `equals_or_above`, `equals_or_below`)<br/>- `value`: the value to match |
 
 ## Dependencies
 

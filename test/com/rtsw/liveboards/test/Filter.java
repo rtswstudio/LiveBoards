@@ -44,11 +44,27 @@ public class Filter {
     }
 
     @Test
+    public void match_equals_or_below() {
+        MatchFilter filter = new MatchFilter(2, 2, MatchFilter.OPERATION_EQUALS_OR_BELOW);
+        List<Row> filtered = filter.filter(rows());
+        Assertions.assertTrue(filtered.size() == 1);
+        Assertions.assertTrue(Integer.parseInt(filtered.get(0).getValues().get(0).toString()) == 0);
+    }
+
+    @Test
     public void match_below() {
         MatchFilter filter = new MatchFilter(2, 5, MatchFilter.OPERATION_BELOW);
         List<Row> filtered = filter.filter(rows());
         Assertions.assertTrue(filtered.size() == 1);
         Assertions.assertTrue(Integer.parseInt(filtered.get(0).getValues().get(0).toString()) == 0);
+    }
+
+    @Test
+    public void match_equals_or_above() {
+        MatchFilter filter = new MatchFilter(2, 7, MatchFilter.OPERATION_EQUALS_OR_ABOVE);
+        List<Row> filtered = filter.filter(rows());
+        Assertions.assertTrue(filtered.size() == 1);
+        Assertions.assertTrue(Integer.parseInt(filtered.get(0).getValues().get(0).toString()) == 5);
     }
 
     @Test
