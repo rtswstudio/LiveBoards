@@ -170,6 +170,9 @@ Tables define the data structures in the in-memory database to hold our data. Th
         },
         "required": ["name", "type"]
       }
+    },
+    "capacity": {
+      "type": "integer"
     }
   },
   "required": ["name", "columns"]
@@ -196,7 +199,8 @@ For our example, we will configure a `browsers` table. It will have columns to h
       "name": "time",
       "type": "timestamp"
     }
-  ]
+  ],
+  "capacity": 1000
 }
 ````
 

@@ -20,6 +20,9 @@
         },
         "required": ["name", "type"]
       }
+    },
+    "capacity": {
+      "type": "integer"
     }
   },
   "required": ["name", "columns"]

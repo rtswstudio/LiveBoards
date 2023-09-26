@@ -9,6 +9,8 @@ public class Table implements Serializable {
 
     private List<Column> columns;
 
+    private int capacity = -1;
+
     public Table() {
     }
 
@@ -30,6 +32,14 @@ public class Table implements Serializable {
 
     public void setColumns(List<Column> columns) {
         this.columns = columns;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
 }

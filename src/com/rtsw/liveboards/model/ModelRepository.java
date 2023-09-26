@@ -102,11 +102,21 @@ public class ModelRepository {
         Row row = new Row(values);
         if (!data.containsKey(tableName)) {
             List<Row> rows = new ArrayList<>();
-            rows.add(row);
+            synchronized (rows) {
+                rows.add(row);
+                if (table.getCapacity() != -1 && rows.size() >= table.getCapacity()) {
+                    rows.remove(0);
+                }
+            }
             data.put(tableName, rows);
         } else {
             List<Row> rows = data.get(tableName);
-            rows.add(row);
+            synchronized (rows) {
+                rows.add(row);
+                if (table.getCapacity() != -1 && rows.size() >= table.getCapacity()) {
+                    rows.remove(0);
+                }
+            }
             data.put(tableName, rows);
         }
         L.info(String.format("added row to table '%s'", tableName));
