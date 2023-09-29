@@ -1,21 +1,19 @@
-# LiveBoards
-
 ![](etc/lb-2.png)
 
 **LiveBoards** allows real-time visualization of your data as events occur, using one single application. Events are published using a RESTful API and stored into an in-memory database loosely following a tabular format familiar from relational databases. Changes in the database are immediately picked up by the filter and aggregation pipelines, and results are calculated on-the-fly for every set of defined boards (views) to your data. Completed results, again, are immediately pushed to boards where visualizations are automatically updated, without the need for any interaction.
 
 ![](etc/lb-1.png)
 
-## Running
+# Running
 
 **Note!** Examples for MacOS, Unix, & Linux.
 
-**Requirements**
+## Requirements
 
 - Make sure you have Java Development Kit version **17** or newer installed
 - Make sure you have Apache Ant **1.10** or newer installed
 
-**Getting Started**
+## Getting Started
 
 1. Clone this repository (and check out a specific version if needed):
    ```
