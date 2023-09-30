@@ -70,4 +70,4 @@ Please see the [Wiki Pages](https://github.com/rtswstudio/LiveBoards/wiki) for c
 
 # License
 
-**LiveBoards** is licensed under the [MIT License](https://github.com/rtswstudio/LiveBoards/LICENSE.md).
+**LiveBoards** is licensed under the [MIT License](https://github.com/rtswstudio/LiveBoards/blob/master/LICENSE.md).
