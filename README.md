@@ -66,4 +66,8 @@
 
 # Documentation
 
-Please see the [Wiki](https://github.com/rtswstudio/LiveBoards/wiki) for full documentation.
+Please see the [Wiki Pages](https://github.com/rtswstudio/LiveBoards/wiki) for complete documentation.
+
+# License
+
+**LiveBoards** is licensed under the [MIT License](https://github.com/rtswstudio/LiveBoards/LICENSE.md).
