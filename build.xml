@@ -1,4 +1,4 @@
-<project name="LiveBoards" default="dist" basedir=".">
+<project name="LiveBoards" xmlns:ivy="antlib:org.apache.ivy.ant" default="dist" basedir=".">
 
     <property name="version" value="0.1"/>
 
@@ -17,7 +17,11 @@
         <mkdir dir="${build}/schema"/>
     </target>
 
-    <target name="compile" depends="init">
+    <target name="resolve" depends="init">
+        <ivy:retrieve/>
+    </target>
+
+    <target name="compile" depends="resolve">
         <javac includeantruntime="false" srcdir="${src}" destdir="${build}" classpathref="classpath"/>
         <copy todir="${build}/schema" >
             <fileset dir="${src}/schema" includes="**"/>
