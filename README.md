@@ -12,6 +12,7 @@
 
 - Make sure you have Java Development Kit version **17** or newer installed
 - Make sure you have Apache Ant **1.10** or newer installed
+- Make sure you have Apache Ivy **2.5** or newer installed (path to JAR file)
 
 ## Building from Source
 
@@ -25,7 +26,7 @@
 2. Compile the code and create a distribution package:
    ```
    $ ant clean
-   $ ant
+   $ ant -lib [PATH_TO_IVY_JAR]
    ```
 3. Modify the `dist/liveboards-config.json` if needed (see schema and example below)
 4. Start the application (`CTRL-C` to stop):
