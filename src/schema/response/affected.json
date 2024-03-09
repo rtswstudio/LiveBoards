@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "affected": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "time": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "required": ["affected", "time"]
+}

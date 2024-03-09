@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "time": {
+      "type": "string"
+    },
+    "boards": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["count"]
+    },
+    "tables": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["count"]
+    },
+    "processors": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["available"]
+    },
+    "memory": {
+      "type": "object",
+      "properties": {
+        "free": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "max": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": ["free", "total", "max"]
+    }
+  },
+  "required": ["version", "time", "boards", "tables", "processors", "memory"]
+}

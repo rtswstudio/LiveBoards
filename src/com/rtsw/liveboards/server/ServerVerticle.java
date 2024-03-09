@@ -8,6 +8,7 @@ import com.rtsw.liveboards.configuration.Configuration;
 import com.rtsw.liveboards.model.Board;
 import com.rtsw.liveboards.model.ModelRepository;
 import com.rtsw.liveboards.configuration.ConfigurationRepository;
+import com.rtsw.liveboards.openapi.API310Generator;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Handler;
 import io.vertx.core.http.HttpServer;
@@ -23,10 +24,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ServerVerticle extends AbstractVerticle {
 
@@ -65,6 +63,17 @@ public class ServerVerticle extends AbstractVerticle {
                         "memory", Map.of("max", Runtime.getRuntime().maxMemory(), "total", Runtime.getRuntime().totalMemory(), "free", Runtime.getRuntime().freeMemory()),
                         "tables", Map.of("count", modelRepository.getTables().size()),
                         "boards", Map.of("count", boardRepository.get().size()))));
+            } catch (Exception e) {
+                ctx.response().setStatusCode(500).end(e.getMessage());
+                e.printStackTrace(System.err);
+            }
+        });
+
+        // api definition
+        router.get("/api/:version").produces("application/json").handler(ctx -> {
+            try {
+                API310Generator generator = new API310Generator(boardRepository.getNames(), modelRepository.getTables());
+                ctx.response().end(objectMapper.writeValueAsString(generator.generate()));
             } catch (Exception e) {
                 ctx.response().setStatusCode(500).end(e.getMessage());
                 e.printStackTrace(System.err);
@@ -190,9 +199,7 @@ public class ServerVerticle extends AbstractVerticle {
 
         options = new SockJSBridgeOptions();
         for (Board board : new BoardRepository(vertx).get()) {
-            options.addOutboundPermitted(new PermittedOptions().setAddress("events.votes"));
-            options.addOutboundPermitted(new PermittedOptions().setAddress("events.browsers"));
-            options.addOutboundPermitted(new PermittedOptions().setAddress("events.measurements"));
+            options.addOutboundPermitted(new PermittedOptions().setAddress(String.format("events.%s", board.getName())));
         }
         router.mountSubRouter("/eventbus", SockJSHandler.create(vertx).bridge(options));
 
