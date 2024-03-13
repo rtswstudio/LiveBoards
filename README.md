@@ -36,7 +36,7 @@
    ```
 5. Check system health using `curl` (or open the URL in your browser):
    ```
-   $ curl "http://localhost:8888/api/1/health"
+   $ curl "http://localhost:8888/api/v1/health"
    ```
    You should see something resembling:
    ````json
@@ -64,6 +64,12 @@
    - Example tables are found under `examples/tables`
    - Example boards are found under `examples/boards`
    - Example data push clients are found under `examples`
+
+7. Use the OpenAPI definition to interact with the APIs:
+   ```
+   $ curl "http://localhost:8888/api/v1"
+   ```
+   Use tools like [Swagger](https://swagger.io) or [Apidog](https://apidog.com) to generate requests or even client libraries.
 
 # Documentation
 
