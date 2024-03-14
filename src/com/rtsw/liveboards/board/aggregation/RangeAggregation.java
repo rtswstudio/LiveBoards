@@ -1,5 +1,6 @@
 package com.rtsw.liveboards.board.aggregation;
 
+import java.util.Date;
 import java.util.Set;
 
 public class RangeAggregation implements Aggregation {
@@ -10,7 +11,7 @@ public class RangeAggregation implements Aggregation {
 
     private Object value;
 
-    public static Set<Class> ALLOWED_CLASSES = Set.of(Integer.class, Double.class);
+    public static Set<Class> ALLOWED_CLASSES = Set.of(Integer.class, Double.class, Date.class);
 
     public RangeAggregation(Object value) {
         min = value;
@@ -19,6 +20,9 @@ public class RangeAggregation implements Aggregation {
             this.value = 0.0;
         }
         if (value instanceof Integer) {
+            this.value = 0;
+        }
+        if (value instanceof Date) {
             this.value = 0;
         }
     }
@@ -48,6 +52,18 @@ public class RangeAggregation implements Aggregation {
                 max = c;
             }
             value = (Integer) max - (Integer) min;
+        }
+        if (value instanceof Date && another instanceof Date) {
+            Date a = (Date) min;
+            Date b = (Date) max;
+            Date c = (Date) another;
+            if (c.before(a)) {
+                min = c;
+            }
+            if (c.after(b)) {
+                max = c;
+            }
+            value = ((Date) max).getTime() - ((Date) min).getTime();
         }
     }
 
